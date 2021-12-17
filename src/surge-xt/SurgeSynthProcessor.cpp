@@ -285,8 +285,8 @@ void SurgeSynthProcessor::processBlock(juce::AudioBuffer<float> &buffer,
             surge->time_data.ppqPos +=
                 (double)BLOCK_SIZE * surge->time_data.tempo / (60. * samplerate);
         }
-        *outL = surge->output[0][blockPos];
-        *outR = surge->output[1][blockPos];
+        *outL += surge->output[0][blockPos];
+        *outR += surge->output[1][blockPos];
 
         if (surge->activateExtraOutputs && sceneAOutput.getNumChannels() == 2 &&
             sceneBOutput.getNumChannels() == 2)
